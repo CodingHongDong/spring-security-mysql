@@ -12,5 +12,5 @@ public class GlobalExceptionHandler {
 	public String handleArgumentException(Exception e) {		
 		return "<h1>" + e.getMessage() + "</h1>";
 	}
-	
+	// 2023-12-09 github TEST
 }
