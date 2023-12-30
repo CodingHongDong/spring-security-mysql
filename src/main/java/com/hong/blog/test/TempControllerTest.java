@@ -18,4 +18,8 @@ public class TempControllerTest {
 		return "temp";
 	}
 	
+	public void test() {
+		System.out.println("github 잔디 test");
+	}
+	
 }
