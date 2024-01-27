@@ -14,6 +14,8 @@ java-db mapping: JPA
 2) Spring security 활용
    - security활용하여 접근 보호
    - 비밀번호 암호화 및 복호화 기능 구현
+  
+3) 카카오 로그인 OAuth2.0 기능 구현
    
 ![image](https://github.com/CodingHongDong/spring-security-mysql/assets/101644470/ac2adae8-cddf-41f4-a572-b669c00a0cee)
 
