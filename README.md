@@ -10,6 +10,7 @@ java-db mapping: JPA
    - CRUD 기능
    - 회원가입 및 로그인
    - 게시판 목록 페이징 처리
+   - 댓글 기능
   
 2) Spring security 활용
    - security활용하여 접근 보호
