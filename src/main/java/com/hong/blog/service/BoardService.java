@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hong.blog.dto.ReplySaveRequestDto;
 import com.hong.blog.model.Board;
 import com.hong.blog.model.Reply;
 import com.hong.blog.model.User;
@@ -19,9 +20,6 @@ public class BoardService {
 
 	@Autowired
 	private BoardRepository boardRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
 	
 	@Autowired
 	private ReplyRepository replyRepository;
@@ -63,14 +61,30 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public void replyWrite(User user, int boardId, Reply requestReply) {
-		Board board = boardRepository.findById(boardId)
-						.orElseThrow(()-> {
-							return new IllegalArgumentException("댓글 쓰기 실패: 게시글 아이디 찾기 실패!");
-						});
-		requestReply.setUser(user);
-		requestReply.setBoard(board);
-		replyRepository.save(requestReply);
+	public void replyWrite(ReplySaveRequestDto replySaveRequestDto) {
+		
+//		User user = userRepository.findById(replySaveRequestDto.getUserId())
+//				.orElseThrow(()-> {
+//					return new IllegalArgumentException("댓글 쓰기 실패: 유저 아이디 찾기 실패!");
+//				});
+//		
+//		Board board = boardRepository.findById(replySaveRequestDto.getBoardId())
+//						.orElseThrow(()-> {
+//							return new IllegalArgumentException("댓글 쓰기 실패: 게시글 아이디 찾기 실패!");
+//						});
+//		
+//		Reply reply = Reply.builder()
+//					 .user(user)
+//					 .board(board)
+//					 .content(replySaveRequestDto.getContent())
+//					 .build();
+		
+		replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+	}
+	
+	@Transactional
+	public void replyDelete(int replyId) {
+		replyRepository.deleteById(replyId);;
 	}
 	
 }
